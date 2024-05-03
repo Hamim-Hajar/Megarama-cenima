@@ -71,6 +71,15 @@
         </div>
 
     </div>
+    <dev>
+
+        <form action="rating" method="post">
+            <input type="hidden" name="filmId" value="1">
+            <label for="score">Score:</label>
+            <input type="number" id="score" name="score" min="1" max="5" required>
+            <button type="submit">Submit</button>
+        </form>
+    </dev>
 </section>
 
 

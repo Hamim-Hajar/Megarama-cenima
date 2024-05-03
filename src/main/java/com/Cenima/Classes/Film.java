@@ -53,6 +53,19 @@ public class Film {
 	public Film() {
 
 	}
+	private double averageRating;
+
+
+
+
+	public void setAverageRating(double averageRating) {
+		this.averageRating = averageRating;
+	}
+
+
+	public double getAverageRating() {
+		return averageRating;
+	}
 
 	///Getters And Setters ///
 	public Integer getId_fiml() {

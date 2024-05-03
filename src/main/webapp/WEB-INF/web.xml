@@ -10,15 +10,18 @@
 			<servlet-name>ShowFilmsServlet</servlet-name>
 			<url-pattern>/home</url-pattern>
 		</servlet-mapping>
-
+	<!-- -->
 	<servlet>
-		<servlet-name>InsertFilmServlet</servlet-name>
-		<servlet-class>com.Cenima.Servlets.InsertFilmServlet</servlet-class>
+		<servlet-name>RatingServlet</servlet-name>
+		<servlet-class>com.Cenima.Servlets.RatingServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>InsertFilmServlet</servlet-name>
-		<url-pattern>/add</url-pattern>
+		<servlet-name>RatingServlet</servlet-name>
+		<url-pattern>/rating</url-pattern>
 	</servlet-mapping>
+
+
+
 
 	<!--  -->
 	<servlet>
