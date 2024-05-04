@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.Cenima.Classes.Film;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -85,7 +88,7 @@ public class FilmsDAOImp implements FilmsDAO{
 
 //	public boolean updateFilm(Film film) throws SQLException {
 //		boolean isUpdated;
-//		Connection connection = DataBaseManager.getConnection();
+//		Connection = DataBaseManager.getConnection();
 //		PreparedStatement statement = connection.prepareStatement(UPDATE_FILM_SQL);
 //		statement.setString(1, film.getTitle());
 //		statement.setString(2,film.getCategory());
@@ -130,6 +133,35 @@ public class FilmsDAOImp implements FilmsDAO{
 		session.close();
 		return films;
 	}
+
+
+	public List<Film> ShowRecommendation() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+
+		// Execute the query to get the top five films with the most reservations
+		org.hibernate.Query query = session.createSQLQuery("SELECT film_id, COUNT(*) as total FROM reservation GROUP BY film_id ORDER BY total DESC");
+		query.setMaxResults(5); // Fetch top five results
+		List<Object[]> results = query.list();
+
+		List<Integer> mostReservedFilmIds = new ArrayList<>();
+		for (Object[] result : results) {
+			mostReservedFilmIds.add((Integer) result[0]);
+		}
+
+		// Retrieve the details of the top five most reserved films
+		Criteria criteria = session.createCriteria(Film.class);
+		criteria.add(Restrictions.in("film_id", mostReservedFilmIds));
+		List<Film> films = criteria.list();
+
+		session.getTransaction().commit();
+		session.close();
+
+		System.out.println(films);
+		return films;
+	}
+
+
 
 //	public List<Film> selectFilmByTitle(String title_film) throws SQLException {
 //		List<Film> films = new ArrayList<>();

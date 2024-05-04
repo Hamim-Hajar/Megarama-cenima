@@ -176,9 +176,10 @@
 
 </div>
 <div class="S-main">
-    <c:forEach var="film" items="${listFilms}">
+    <c:forEach var="film" items="${filmsR}">
         <div class="S-main-hero">
-            <div class="card-film">
+            <div class="card-film" style="background: black">
+                <img src="https://i.ibb.co/q195fst/Purple-White-Modern-Smile-Chat-Mobile-Icon-Logo-2.png" id="Booking" />
                 <img  class="cover-img" src="${film.getFilm_pic()}" width="100%">
 
                 <div class="film-content ">

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Cenima.DAO.FilmsDAOImp;
+import com.Cenima.DAO.RecommendationDAOImpl;
 
 
 @WebServlet("/ShowFilmsServlet")
@@ -19,8 +20,8 @@ public class ShowFilmsServlet extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		FilmsDAOImp films = new FilmsDAOImp();
-        request.setAttribute("listFilms", films.selectAllFilms());
-        System.out.println(films.selectAllFilms());
+		request.setAttribute("listFilms", films.selectAllFilms());
+		request.setAttribute("filmsR", films.ShowRecommendation());
         request.getRequestDispatcher("/WEB-INF/ShowFilms.jsp").forward(request, response);
 	}
 

@@ -32,8 +32,8 @@ public class UserDAOImp implements UserDAO {
         session.close();
         return user;
     }
-//    public User getUser(String username, String password) throws SQLException {
-//        User user=null;
+    //    public User getUser(String username, String password) throws SQLException {
+//        User=null;
 //        Connection con = DataBaseManager.getConnection();
 //        PreparedStatement ps = con.prepareStatement("select user_id , role from user1 where email=? and passwrd=?");
 //        ps.setString(1,username);

@@ -311,7 +311,16 @@ i{
     padding: 15px;
     background: #0a2f45;
     margin: 5px;
+    position: relative;
 }
+#Booking{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .film-content , .film-content2{
     display: flex;
     align-items: center;

@@ -2,6 +2,7 @@ package com.Cenima.Servlets;
 
 import com.Cenima.Classes.User;
 import com.Cenima.DAO.FilmsDAOImp;
+import com.Cenima.DAO.RecommendationDAOImpl;
 import com.Cenima.DAO.UserDAO;
 import com.Cenima.DAO.UserDAOImp;
 
@@ -30,17 +31,18 @@ public class Login extends HttpServlet {
 
 		try {
 			User user = userDAO.getUser(email,password);
-			System.out.println(user);
 			if(user != null){
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
 				if(user.getRole().equals("admin")){
-					this.getServletContext().getRequestDispatcher("/WEB-INF/addMovies.jsp").forward(request, response);
+					this.getServletContext().getRequestDispatcher("/WEB-INF/addMovies.jsp").forward(request , response);
 				}else {
 					session.setAttribute("id" , user.getUserId());
 					FilmsDAOImp film = new FilmsDAOImp();
+
 					request.setAttribute("listFilms", film.selectAllFilms());
-					 this.getServletContext().getRequestDispatcher("/WEB-INF/ShowFilms.jsp").forward(request, response);
+					request.setAttribute("filmsR", film.ShowRecommendation());
+					 this.getServletContext().getRequestDispatcher("/WEB-INF/ShowFilms.jsp").forward(request , response);
 				}
 			}else {
 				response.sendRedirect("login");
