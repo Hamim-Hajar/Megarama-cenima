@@ -27,7 +27,6 @@
 
     <div class="buttons1">
         <button id="singin">log out</button>
-        <button id="singup">log out</button>
     </div>
 </header>
 
@@ -219,7 +218,7 @@
         </div>
     </c:forEach>
 
-    <p id="alert1">${alert}</p>
+    <p id="alert1">${alert}.</p>
 </div>
 
 
@@ -241,6 +240,7 @@
     document.getElementById('prev').onclick = function(){
         let lists = document.querySelectorAll('.item');
         document.getElementById('slide').prepend(lists[lists.length - 1]);
+
     }
 
 </script>
